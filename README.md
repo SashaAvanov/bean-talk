@@ -1,8 +1,11 @@
-# React + Vite
+# Bean Talk - Coffee Review Website
+Users can browse reviews for all types of coffee (beans, drip, espresso, lattes, etc.) and sign up to add their own reviews.  
+Check out the app here: Launching soon!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Tech Used
+React, Tailwind CSS, Express, MongoDB
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Optimizations/Changes
+- currently building backend
+- adding sign up and log in pages
+- will switch out MongoDB with SQL database
