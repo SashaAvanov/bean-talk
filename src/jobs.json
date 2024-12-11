@@ -1,57 +1,57 @@
 {
-  "jobs": [
+  "reviews": [
     {
       "id": "1",
       "company": "Good & Gather",
-      "name": "Ethiopian Yirgacheffe",
+      "coffeeName": "Ethiopian Yirgacheffe",
       "type": "Ground/Whole Bean",
       "purchasePlace": "Target",
-      "review": "A great go-to coffee to brew at home if you prefer light roasts and a quick brewing method. It's on the darker end of a light roast. I've mostly prepared it in my drip machine and it would surely taste even better if made with something a little fancier like a V60 or Chemex. Fair warning though - this is definitely not the same quality as an Ethiopian bean from an established roaster.",
+      "reviewText": "A great go-to coffee to brew at home if you prefer light roasts and a quick brewing method. It's on the darker end of a light roast. I've mostly prepared it in my drip machine and it would surely taste even better if made with something a little fancier like a V60 or Chemex. Fair warning though - this is definitely not the same quality as an Ethiopian bean from an established roaster.",
       "price": "$7.99/bag",
       "rating": "6"
     },
     {
       "id": "2",
       "company": "Nespresso",
-      "name": "Intenso",
+      "coffeeName": "Intenso",
       "type": "Pod",
       "purchasePlace": "Nespresso",
-      "review": "Join our team as a Front-End Developer in sunny Miami, FL. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
+      "reviewText": "Join our team as a Front-End Developer in sunny Miami, FL. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
       "price": "$10/Carton of Ten",
       "rating": "5"
     },
     {
       "id": "3",
-      "name": "React.js Dev",
+      "coffeeName": "React.js Dev",
       "type": "Full-Time",
       "purchasePlace": "Brooklyn, NY",
-      "review": "Are you passionate about front-end development? Join our team in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
+      "reviewText": "Are you passionate about front-end development? Join our team in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
       "price": "$70K - $80K",
       "rating": "6"
     },
     {
       "id": "4",
-      "name": "React Front-End Dev",
+      "coffeeName": "React Front-End Dev",
       "type": "Part-Time",
       "purchasePlace": "Pheonix, AZ",
-      "review": "Join our team as a Part-Time Front-End Developer in beautiful Pheonix, AZ. We are looking for a self-motivated individual with a passion for creating engaging user experiences. This position offers flexible hours and the opportunity to work remotely.",
+      "reviewText": "Join our team as a Part-Time Front-End Developer in beautiful Pheonix, AZ. We are looking for a self-motivated individual with a passion for creating engaging user experiences. This position offers flexible hours and the opportunity to work remotely.",
       "price": "$60K - $70K",
       "rating": "6/10"
     },
     {
       "id": "5",
-      "name": "Full Stack React Developer",
+      "coffeeName": "Full Stack React Developer",
       "type": "Full-Time",
-      "review": "Exciting opportunity for a Full-Time Front-End Developer in bustling Atlanta, GA. We are seeking a talented individual with a passion for building elegant and scalable web applications. Join our team and make an impact!",
+      "reviewText": "Exciting opportunity for a Full-Time Front-End Developer in bustling Atlanta, GA. We are seeking a talented individual with a passion for building elegant and scalable web applications. Join our team and make an impact!",
       "purchasePlace": "Atlanta, GA",
       "price": "$90K - $100K",
       "rating": "6/10"
     },
     {
       "id": "6",
-      "name": "React Native Developer",
+      "coffeeName": "React Native Developer",
       "type": "Full-Time",
-      "review": "Join our team as a Front-End Developer in beautiful Portland, OR. We are looking for a skilled and enthusiastic individual to help us create innovative web solutions. Competitive price and great benefits package available.",
+      "reviewText": "Join our team as a Front-End Developer in beautiful Portland, OR. We are looking for a skilled and enthusiastic individual to help us create innovative web solutions. Competitive price and great benefits package available.",
       "purchasePlace": "Portland, OR",
       "price": "$100K - $110K",
       "rating": "6/10"

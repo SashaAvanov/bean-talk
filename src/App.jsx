@@ -3,45 +3,46 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
-import JobsPage from './pages/JobsPage';
+import ReviewsPage from './pages/ReviewsPage';
 import NotFoundPage from './pages/NotFoundPage';
-import JobPage, {jobLoader} from './pages/JobPage';
-import AddJobPage from './pages/AddJobPage';
-import EditJobPage from './pages/EditJobPage';
+import ReviewPage, {reviewLoader} from './pages/ReviewPage';
+import AddReviewPage from './pages/AddReviewPage';
+import EditReviewPage from './pages/EditReviewPage';
+// import SignUpPage from './pages/SignUpPage';
 
 const App = () => {
 
-  // Add New Job
+  // Add New Review
 
-  const addJob = async (newJob) => {
-    const res = await fetch('/api/jobs', {
+  const addReview = async (newReview) => {
+    const res = await fetch('/api/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(newJob)
+      body: JSON.stringify(newReview)
     });
     return;
   };
 
-  // Delete Job
+  // Delete Review
 
-  const deleteJob = async (id) => {
-    const res = await fetch(`/api/jobs/${id}`, {
+  const deleteReview = async (id) => {
+    const res = await fetch(`/api/reviews/${id}`, {
       method: 'DELETE'
     });
     return;
   }
 
-  // Update Job
+  // Update Review
 
-  const updateJob = async (job) => {
-    const res = await fetch(`/api/jobs/${job.id}`, {
+  const updateReview = async (review) => {
+    const res = await fetch(`/api/reviews/${review.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(job)
+      body: JSON.stringify(review)
     });
     return;
   }
@@ -50,11 +51,12 @@ const App = () => {
       createRoutesFromElements(
         <Route path='/' element={<MainLayout />}>
           <Route index element={<HomePage />} />
-          <Route path='/jobs' element={<JobsPage />} />
-          <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
-          <Route path='/edit-job/:id' element={<EditJobPage updateJobSubmit={updateJob} />} loader={jobLoader} />
-          <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob} />} loader={jobLoader} />
+          <Route path='/reviews' element={<ReviewsPage />} />
+          <Route path='/add-review' element={<AddReviewPage addReviewSubmit={addReview} />} />
+          <Route path='/edit-review/:id' element={<EditReviewPage updateReviewSubmit={updateReview} />} loader={reviewLoader} />
+          <Route path='/reviews/:id' element={<ReviewPage deleteReview={deleteReview} />} loader={reviewLoader} />
           <Route path='*' element={<NotFoundPage />} />
+          {/* <Route path='/sign-up' element={<SignUpPage />} /> */}
         </Route>
       )
   );

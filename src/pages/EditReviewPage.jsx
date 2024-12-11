@@ -4,16 +4,16 @@ import { useState } from 'react';
 import { useParams, useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const EditJobPage = ({ updateJobSubmit }) => {
-    const job = useLoaderData();
+const EditReviewPage = ({ updateReviewSubmit }) => {
+    const review = useLoaderData();
 
-    const [company, setCompany] = useState(job.company);
-    const [name, setName] = useState(job.name);
-    const [type, setType] = useState(job.type);
-    const [review, setReview] = useState(job.review);
-    const [purchasePlace, setPurchasePlace] = useState(job.purchasePlace);
-    const [price, setPrice] = useState(job.price);
-    const [rating, setRating] = useState(job.rating)
+    const [company, setCompany] = useState(review.company);
+    const [coffeeName, setCoffeeName] = useState(review.name);
+    const [type, setType] = useState(review.type);
+    const [reviewText, setReviewText] = useState(review.reviewText);
+    const [purchasePlace, setPurchasePlace] = useState(review.purchasePlace);
+    const [price, setPrice] = useState(review.price);
+    const [rating, setRating] = useState(review.rating)
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -21,22 +21,22 @@ const EditJobPage = ({ updateJobSubmit }) => {
     const submitForm = (e) => {
         e.preventDefault();
 
-        const updatedJob = {
+        const updatedReview = {
             id,
             company,
-            name,
+            coffeeName,
             type,
             purchasePlace,
-            review,
+            reviewText,
             price,
             rating
         }
 
-        updateJobSubmit(updatedJob);
+        updateReviewSubmit(updatedReview);
 
-        toast.success('Job updated successfully');
+        toast.success('Review updated successfully');
 
-        return navigate(`/jobs/${id}`);
+        return navigate(`/review/${id}`);
     }
 
     return (
@@ -46,7 +46,7 @@ const EditJobPage = ({ updateJobSubmit }) => {
           className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
         >
           <form onSubmit={submitForm}>
-            <h2 className="text-3xl text-center font-semibold mb-6">Update Job</h2>
+            <h2 className="text-3xl text-center font-semibold mb-6">Update Review</h2>
 
             <div className="mb-4">
               <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
@@ -90,12 +90,12 @@ const EditJobPage = ({ updateJobSubmit }) => {
               <input
                 type="text"
                 id="name"
-                name="name"
+                name="coffeeName"
                 className="border rounded w-full py-2 px-3 mb-2"
                 placeholder="eg. Ethiopian Yirgacheffe, Latte"
                 required
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setCoffeeName(e.target.value)}
               />
             </div>
 
@@ -107,12 +107,12 @@ const EditJobPage = ({ updateJobSubmit }) => {
               >
               <textarea
                 id="review"
-                name="review"
+                name="reviewText"
                 className="border rounded w-full py-2 px-3"
                 rows="4"
                 placeholder="Tell us all about it! Flavor notes? Favorite way to brew? Is it a seasonal drink from your favorite cafe?"
-                value={review}
-                onChange={(e) => setReview(e.target.value)}
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
               ></textarea>
             </div>
 
@@ -169,7 +169,7 @@ const EditJobPage = ({ updateJobSubmit }) => {
                 className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                 type="submit"
               >
-                Update Job
+                Update Review
               </button>
             </div>
           </form>
@@ -179,4 +179,4 @@ const EditJobPage = ({ updateJobSubmit }) => {
     )
 }
 
-export default EditJobPage
+export default EditReviewPage

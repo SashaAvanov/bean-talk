@@ -1,28 +1,28 @@
 import React from 'react'
 
 import { useState, useEffect } from 'react';
-import JobListing from './JobListing';
+import Review from './Review';
 import Spinner from './Spinner';
 
 
-const JobListings = ({ isHome = false }) => {
-    const [jobs, setJobs] = useState([]);
+const Reviews = ({ isHome = false }) => {
+    const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchJobs = async () => {
-            const apiUrl = isHome ? '/api/jobs?_limit=3' : '/api/jobs';
+        const fetchReviews = async () => {
+            const apiUrl = isHome ? '/api/reviews?_limit=3' : '/api/reviews';
             try {
                 const res = await fetch(apiUrl);
                 const data = await res.json();
-                setJobs(data);
+                setReviews(data);
             } catch (error) {
                 console.log('Error fetching data', error)
             } finally {
                 setLoading(false)
             }
         }
-        fetchJobs();
+        fetchReviews();
     }, []);
 
     return (
@@ -36,8 +36,8 @@ const JobListings = ({ isHome = false }) => {
                     <Spinner loading={loading} />
                 ) : (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {jobs.map((job) => (
-                    <JobListing key={ job.id } job={ job } />
+                    {reviews.map((review) => (
+                    <Review key={ review.id } review={ review } />
                     ))}
                 </div>
                 )}
@@ -46,4 +46,4 @@ const JobListings = ({ isHome = false }) => {
   );
 }
 
-export default JobListings
+export default Reviews

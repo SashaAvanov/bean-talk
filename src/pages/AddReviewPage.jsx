@@ -4,11 +4,11 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const AddJobPage = ({ addJobSubmit }) => {
+const AddReviewPage = ({ addReviewSubmit }) => {
     const [company, setCompany] = useState();
-    const [name, setName] = useState();
+    const [coffeeName, setName] = useState();
     const [type, setType] = useState('Ground');
-    const [review, setReview] = useState();
+    const [reviewText, setReviewText] = useState();
     const [purchasePlace, setPurchasePlace] = useState();
     const [price, setPrice] = useState();
     const [rating, setRating] = useState();
@@ -18,25 +18,25 @@ const AddJobPage = ({ addJobSubmit }) => {
     const submitForm = (e) => {
         e.preventDefault();
 
-        const newJob = {
+        const newReview = {
             company,
-            name,
+            coffeeName,
             type,
-            review,
+            reviewText,
             purchasePlace,
             price,
             rating
         }
 
-        addJobSubmit(newJob);
+        addReviewSubmit(newReview);
 
-        toast.success('Job added successfully');
+        toast.success('Review added successfully');
 
-        return navigate('/jobs');
+        return navigate('/reviews');
     }
 
   return (
-    <section className="bg-indigo-50">
+    <section className="bg-gray-100">
       <div className="container m-auto max-w-2xl py-24">
         <div
           className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
@@ -65,8 +65,8 @@ const AddJobPage = ({ addJobSubmit }) => {
 
             <div className="mb-4">
               <label className="block text-gray-700 font-bold mb-2"
-                >Brand/Roaster/Café</label
-              >
+                >Brand/Roaster/Café
+              </label>
               <input
                 type="text"
                 id="company"
@@ -86,11 +86,11 @@ const AddJobPage = ({ addJobSubmit }) => {
               <input
                 type="text"
                 id="name"
-                name="name"
+                name="coffeeName"
                 className="border rounded w-full py-2 px-3 mb-2"
                 placeholder="eg. Ethiopian Yirgacheffe, Latte"
                 required
-                value={name}
+                value={coffeeName}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
@@ -103,12 +103,12 @@ const AddJobPage = ({ addJobSubmit }) => {
               >
               <textarea
                 id="review"
-                name="review"
+                name="reviewText"
                 className="border rounded w-full py-2 px-3"
                 rows="4"
                 placeholder="Tell us all about it! Flavor notes? Favorite way to brew? Is it a seasonal drink from your favorite cafe?"
-                value={review}
-                onChange={(e) => setReview(e.target.value)}
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
               ></textarea>
             </div>
 
@@ -159,75 +159,6 @@ const AddJobPage = ({ addJobSubmit }) => {
                 onChange={(e) => setRating(e.target.value)}           
               />
             </div>
-            {/*             
-            <h3 className="text-2xl mb-5">Company Info</h3>
-
-            <div className="mb-4">
-              <label htmlFor="company" className="block text-gray-700 font-bold mb-2"
-                >Company Name</label
-              >
-              <input
-                type="text"
-                id="company"
-                name="company"
-                className="border rounded w-full py-2 px-3"
-                placeholder="Company Name"
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-              />
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="company_description"
-                className="block text-gray-700 font-bold mb-2"
-                >Company Description</label
-              >
-              <textarea
-                id="company_description"
-                name="company_description"
-                className="border rounded w-full py-2 px-3"
-                rows="4"
-                placeholder="What does your company do?"
-                value={companyDescription}
-                onChange={(e) => setCompanyDescription(e.target.value)}
-              ></textarea>
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="contact_email"
-                className="block text-gray-700 font-bold mb-2"
-                >Contact Email</label
-              >
-              <input
-                type="email"
-                id="contact_email"
-                name="contact_email"
-                className="border rounded w-full py-2 px-3"
-                placeholder="Email address for applicants"
-                required
-                value={contactEmail}
-                onChange={(e) => setContactEmail(e.target.value)}
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="contact_phone"
-                className="block text-gray-700 font-bold mb-2"
-                >Contact Phone</label
-              >
-              <input
-                type="tel"
-                id="contact_phone"
-                name="contact_phone"
-                className="border rounded w-full py-2 px-3"
-                placeholder="Optional phone for applicants"
-                value={contactPhone}
-                onChange={(e) => setContactPhone(e.target.value)}
-              />
-            </div> 
-            */}
 
             <div>
               <button
@@ -244,4 +175,4 @@ const AddJobPage = ({ addJobSubmit }) => {
   )
 }
 
-export default AddJobPage
+export default AddReviewPage

@@ -31,15 +31,20 @@ const Navbar = () => {
                   >Home
                 </NavLink>
                 <NavLink
-                  to="/jobs"
+                  to="/reviews"
                   className={linkClass}
                   >Reviews
                 </NavLink>
                 <NavLink
-                  to="/add-job"
+                  to="/add-review"
                   className={linkClass}
                   >Add Review
                 </NavLink>
+                {/* <NavLink
+                  to="/sign-up"
+                  className={linkClass}
+                  >Sign Up
+                </NavLink> */}
               </div>
             </div>
           </div>
