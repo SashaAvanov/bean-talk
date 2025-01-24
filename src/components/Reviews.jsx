@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { useState, useEffect } from 'react';
-import Review from './Review';
-import Spinner from './Spinner';
+import Review from './Review.jsx';
+import Spinner from './Spinner.jsx';
+import supabase from '../supabaseClient.js';
 
 
 const Reviews = ({ isHome = false }) => {
@@ -10,19 +11,36 @@ const Reviews = ({ isHome = false }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchReviews = async () => {
-            const apiUrl = isHome ? '/api/reviews?_limit=3' : '/api/reviews';
-            try {
-                const res = await fetch(apiUrl);
-                const data = await res.json();
+        const fetchThreeReviews = async () => {
+            const {data, error} = await supabase
+            .from('reviews')
+            .select('*')
+            .order('id', {ascending: false})
+            .limit(3);
+            
+            if (error) {
+                console.log('Error fetching data:', error)
+            } else {
                 setReviews(data);
-            } catch (error) {
-                console.log('Error fetching data', error)
-            } finally {
-                setLoading(false)
+                setLoading(false);
             }
         }
-        fetchReviews();
+
+        const fetchAllReviews = async () => {
+            const {data, error} = await supabase
+            .from('reviews')
+            .select('*')
+            .order('id', {ascending: false})
+            
+            if (error) {
+                console.log('Error fetching data:', error)
+            } else {
+                setReviews(data);
+                setLoading(false);
+            }
+        }
+
+        isHome ? fetchThreeReviews() : fetchAllReviews();
     }, []);
 
     return (

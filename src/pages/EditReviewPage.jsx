@@ -8,10 +8,10 @@ const EditReviewPage = ({ updateReviewSubmit }) => {
     const review = useLoaderData();
 
     const [company, setCompany] = useState(review.company);
-    const [coffeeName, setCoffeeName] = useState(review.name);
+    const [coffeeName, setCoffeeName] = useState(review.coffee_name);
     const [type, setType] = useState(review.type);
-    const [reviewText, setReviewText] = useState(review.reviewText);
-    const [purchasePlace, setPurchasePlace] = useState(review.purchasePlace);
+    const [reviewText, setReviewText] = useState(review.review_text);
+    const [purchasePlace, setPurchasePlace] = useState(review.purchase_place);
     const [price, setPrice] = useState(review.price);
     const [rating, setRating] = useState(review.rating)
 
@@ -36,7 +36,7 @@ const EditReviewPage = ({ updateReviewSubmit }) => {
 
         toast.success('Review updated successfully');
 
-        return navigate(`/review/${id}`);
+        return navigate(`/reviews/${id}`);
     }
 
     return (
@@ -94,7 +94,7 @@ const EditReviewPage = ({ updateReviewSubmit }) => {
                 className="border rounded w-full py-2 px-3 mb-2"
                 placeholder="eg. Ethiopian Yirgacheffe, Latte"
                 required
-                value={name}
+                value={coffeeName}
                 onChange={(e) => setCoffeeName(e.target.value)}
               />
             </div>
@@ -166,7 +166,7 @@ const EditReviewPage = ({ updateReviewSubmit }) => {
 
             <div>
               <button
-                className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+                className="bg-yellow-900 hover:bg-yellow-950 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 Update Review

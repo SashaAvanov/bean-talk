@@ -3,11 +3,12 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import supabase from '../supabaseClient';
 
 const AddReviewPage = ({ addReviewSubmit }) => {
     const [company, setCompany] = useState();
     const [coffeeName, setName] = useState();
-    const [type, setType] = useState('Ground');
+    const [type, setType] = useState();
     const [reviewText, setReviewText] = useState();
     const [purchasePlace, setPurchasePlace] = useState();
     const [price, setPrice] = useState();
@@ -165,7 +166,7 @@ const AddReviewPage = ({ addReviewSubmit }) => {
                 className="bg-yellow-900 hover:bg-yellow-950 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                 type="submit"
               >
-                Add Job
+                Add Review
               </button>
             </div>
           </form>

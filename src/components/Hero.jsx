@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Hero = ({
-    title = 'Coffee Reviews',
+    title = 'Bean Talk - Coffee Reviews',
     subtitle = 'Give us your hard-hitting reviews for beans, espresso, drip, lattes, and more!'
 }) => {
   return (

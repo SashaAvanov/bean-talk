@@ -4,6 +4,7 @@ import { useParams, useLoaderData, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaStore } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import supabase from '../supabaseClient';
 
 const ReviewPage = ({ deleteReview }) => {
     const navigate = useNavigate();
@@ -11,13 +12,13 @@ const ReviewPage = ({ deleteReview }) => {
     const review = useLoaderData();
     
     const onDeleteClick = (reviewId) => {
-      const confirm = window.confirm('Are you sure you want to delete this listing?')
+      const confirm = window.confirm('Are you sure you want to delete this review?')
 
       if(!confirm) return;
 
       deleteReview(reviewId);
 
-      toast.success('Job deleted successfully');
+      toast.success('Review deleted successfully');
 
       navigate('/reviews');
     }
@@ -44,13 +45,13 @@ const ReviewPage = ({ deleteReview }) => {
             >
               <div className="text-gray-500 mb-4">{review.type}</div>
               <h1 className="text-3xl font-bold mb-4">
-                {review.company}: {review.coffeeName}
+                {review.company}: {review.coffee_name}
               </h1>
               <div
                 className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
               >
                 <FaStore className='text-yellow-900 mr-1 mt-0.5'/>
-                <p className="text-yellow-900">{review.purchasePlace}</p>
+                <p className="text-yellow-900">{review.purchase_place}</p>
               </div>
             </div>
 
@@ -59,7 +60,7 @@ const ReviewPage = ({ deleteReview }) => {
                 Review
               </h3>
 
-              <p className="mb-4">{review.reviewText}</p>
+              <p className="mb-4">{review.review_text}</p>
 
               <h3 className="text-yellow-900 text-lg font-bold mb-2">Price/Unit</h3>
 
@@ -99,10 +100,27 @@ const ReviewPage = ({ deleteReview }) => {
     )
 }
 
+/*
 const reviewLoader = async ({ params }) => {
     const res = await fetch(`/api/reviews/${params.id}`);
     const data = await res.json();
     return data;
 }
+*/
+
+// fetch review
+
+const reviewLoader = async ({ params }) => {
+    const {data, error} = await supabase
+    .from('reviews')
+    .select('*')
+    .eq('id', params.id)
+    .single();
+
+    if (error) {
+      console.error('Failed to load review: ', error);
+    }
+    return data;
+};
 
 export { ReviewPage as default, reviewLoader };

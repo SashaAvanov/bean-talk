@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 const Review = ({ review }) => {
     const [showFullDescription, setShowFullDescription] = useState(false)
 
-    let actualReview = review.reviewText;
+    let fullReview = review.review_text;
 
-    if (!showFullDescription) {
-        actualReview = actualReview.substring(0, 90) + '...';
+    if (!showFullDescription && review.review_text.length > 91) {
+        fullReview = fullReview.substring(0, 90) + '...';
     }
 
     return (
@@ -18,23 +18,23 @@ const Review = ({ review }) => {
             <div className="p-4">
             <div className="mb-6">
                 <div className="text-gray-600 my-2">{ review.type }</div>
-                <h3 className="text-xl font-bold">{ review.company }: { review.coffeeName }</h3>
+                <h3 className="text-xl font-bold">{ review.company }: { review.coffee_name }</h3>
             </div>
     
-            <div className="mb-5">{ actualReview }</div>
+            <div className="mb-5">{ fullReview }</div>
 
             <button onClick={() => setShowFullDescription((prevState) => !prevState)} className="text-yellow-700 mb-5 hover:text-yellow-800">
                 { showFullDescription ? 'Less' : 'More' }
             </button>
     
-            <h3 className="text-yellow-700 mb-2">Rating: { review.rating }/10</h3>
+            <h3 className="text-yellow-700 mb-2">Rating: {review.rating}/10</h3>
     
             <div className="border border-gray-100 mb-5"></div>
     
             <div className="flex flex-col lg:flex-row justify-between mb-4">
                 <div className="text-yellow-900 mb-3">
                 <FaStore className='inline text-lg mb-1 mr-1' />
-                { review.purchasePlace }
+                { review.purchase_place }
                 </div>
                 <Link
                 to={`/reviews/${review.id}`}

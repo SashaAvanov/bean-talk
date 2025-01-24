@@ -8,6 +8,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import ReviewPage, {reviewLoader} from './pages/ReviewPage';
 import AddReviewPage from './pages/AddReviewPage';
 import EditReviewPage from './pages/EditReviewPage';
+import supabase from './supabaseClient.js'
 // import SignUpPage from './pages/SignUpPage';
 
 const App = () => {
@@ -15,37 +16,59 @@ const App = () => {
   // Add New Review
 
   const addReview = async (newReview) => {
-    const res = await fetch('/api/reviews', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newReview)
-    });
-    return;
+      const {data, error} = await supabase
+      .from('reviews')
+      .insert([{
+          company: newReview.company,
+          coffee_name: newReview.coffeeName,
+          type: newReview.type,
+          review_text: newReview.reviewText,
+          purchase_place: newReview.purchasePlace,
+          price: newReview.price,
+          rating: newReview.rating
+      }]);
+      if (error) {
+          console.log('Error adding review:', error)
+      } else {
+          return
+      }
   };
 
   // Delete Review
 
   const deleteReview = async (id) => {
-    const res = await fetch(`/api/reviews/${id}`, {
-      method: 'DELETE'
-    });
-    return;
-  }
+      const {error} = await supabase
+      .from('reviews')
+      .delete()
+      .eq('id', id);
+      if (error) {
+          console.log('Error deleting review:', error)
+      } else {
+          return
+      }
+  };
 
   // Update Review
 
-  const updateReview = async (review) => {
-    const res = await fetch(`/api/reviews/${review.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(review)
-    });
-    return;
-  }
+  const updateReview = async (updatedReview) => {
+      const {error} = await supabase
+      .from('reviews')
+      .update({
+          company: updatedReview.company,
+          coffee_name: updatedReview.coffeeName,
+          type: updatedReview.type,
+          review_text: updatedReview.reviewText,
+          purchase_place: updatedReview.purchasePlace,
+          price: updatedReview.price,
+          rating: updatedReview.rating
+      })
+      .eq('id', updatedReview.id);
+      if (error) {
+        console.log('Error updating review:', error)
+      } else {
+        return
+      }
+  };
  
   const router = createBrowserRouter(
       createRoutesFromElements(

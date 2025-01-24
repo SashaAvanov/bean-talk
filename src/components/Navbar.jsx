@@ -13,14 +13,14 @@ const Navbar = () => {
             className="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
           >
             
-            <NavLink className="flex flex-shrink-0 items-center mr-4" to="/ ">
+            <NavLink className="flex flex-shrink-0 items-center mr-4" to="/">
               <img
                 className="h-10 w-auto"
                 src={ coffeelogo }
                 alt="Coffee Cup"
               />
               <span className="hidden md:block text-white text-2xl font-bold ml-2"
-                >Coffee Reviews</span
+                >Bean Talk</span
               >
             </NavLink>
             <div className="md:ml-auto">
