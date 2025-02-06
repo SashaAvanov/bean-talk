@@ -17,6 +17,7 @@ const EditReviewPage = ({ updateReviewSubmit }) => {
 
     const navigate = useNavigate();
     const { id } = useParams();
+    const possibleRatings = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
     const submitForm = (e) => {
         e.preventDefault();
@@ -30,6 +31,11 @@ const EditReviewPage = ({ updateReviewSubmit }) => {
             reviewText,
             price,
             rating
+        }
+
+        if (!possibleRatings.includes(updatedReview.rating)) {
+          toast.error('Rating should be a number from 1 to 10')
+          return navigate(`/edit-review/${id}`)
         }
 
         updateReviewSubmit(updatedReview);
@@ -60,6 +66,7 @@ const EditReviewPage = ({ updateReviewSubmit }) => {
                 value={type}
                 onChange={(e) => setType(e.target.value)}
               >
+                <option value="">Please choose an option</option>
                 <option value="Ground/Whole Bean">Ground/Whole Bean</option>
                 <option value="Espresso">Espresso</option>
                 <option value="In-Store">In-Store</option>

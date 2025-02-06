@@ -16,6 +16,7 @@ const App = () => {
   // Add New Review
 
   const addReview = async (newReview) => {
+      console.log(newReview)
       const {data, error} = await supabase
       .from('reviews')
       .insert([{

@@ -15,6 +15,7 @@ const AddReviewPage = ({ addReviewSubmit }) => {
     const [rating, setRating] = useState();
 
     const navigate = useNavigate();
+    const possibleRatings = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
     const submitForm = (e) => {
         e.preventDefault();
@@ -28,7 +29,12 @@ const AddReviewPage = ({ addReviewSubmit }) => {
             price,
             rating
         }
-
+        
+        if (!possibleRatings.includes(newReview.rating)) {
+          toast.error('Rating should be a number from 1 to 10')
+          return navigate('/add-review')
+        }
+        
         addReviewSubmit(newReview);
 
         toast.success('Review added successfully');
@@ -57,6 +63,7 @@ const AddReviewPage = ({ addReviewSubmit }) => {
                 value={type}
                 onChange={(e) => setType(e.target.value)}
               >
+                <option value="">Please choose an option</option>
                 <option value="Ground/Whole Bean">Ground/Whole Bean</option>
                 <option value="Espresso">Espresso</option>
                 <option value="In-Store">In-Store</option>
